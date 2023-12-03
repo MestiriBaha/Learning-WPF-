@@ -8,51 +8,72 @@
         Title="MainWindow" Height="450" Width="800" FontSize="20">
     <Window.Content>
     <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <Grid.Children>
-                <!--Main Menu-->
-                <Menu FontSize="20">
-                    <MenuItem Header="_View">
-                        <MenuItem Header="_Customers"/>
-                        <MenuItem Header="_Products"/>
-                    </MenuItem>
-                </Menu>
-                <!--Header-->
-                <StackPanel Background="AliceBlue" Orientation="Horizontal">
-                    <Image/>
-                    <TextBlock Text="First App" FontSize="30" Foreground="AntiqueWhite"/>
-                    <TextBlock Text="Version 1.0" FontSize="10" Foreground="DodgerBlue"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="250"/>
+                <ColumnDefinition Width="3*" MinWidth="250"/>
+            </Grid.ColumnDefinitions>
 
+            <!-- Main menu -->
+            <Menu Grid.ColumnSpan="2" FontSize="20">
+                <MenuItem Header="_View">
+                    <MenuItem Header="_Customers"/>
+                    <MenuItem Header="_Products"/>
+                </MenuItem>
+            </Menu>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Background="#F05A28">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="/Images/logo.png" Width="100" Margin="0 5 5 5"/>
+                    <TextBlock Text="Customers App" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBlock Text="Version 1.0" FontSize="16" Foreground="#333333" VerticalAlignment="Bottom" Margin="10 0 0 22"/>
                 </StackPanel>
-        <!--<Button
-                x:Name="button"
-                 Click="Button_Click"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10" Width="75"
-                 >
-            <Button.Content>
+            </StackPanel>
+
+            <!-- Customer list -->
+            <Grid Grid.Row="2" Background="#777">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Ressources/Add.png" Height="15" Margin="0 0 5 0"/>
-                    <TextBlock Text="Add"/>
-
-
+                    <Button Margin="10" Width="75">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"/>
+                            <TextBlock Text="Add"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Content="Delete" Width="75" Margin="0 10 10 10"/>
+                    <Button Margin="0 10 10 10">
+                        <Image Source="/Images/move.png" Height="18"/>
+                    </Button>
                 </StackPanel>
-            </Button.Content>
-            <Button.Background>
-                <LinearGradientBrush>
-                    
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>-->
-            </Grid.Children>
+                <ListView Grid.Row="1" Margin="10 0 10 10">
+                    <ListViewItem>Julia</ListViewItem>
+                    <ListViewItem>Alex</ListViewItem>
+                    <ListViewItem>Thomas</ListViewItem>
+                </ListView>
+            </Grid>
+
+            <!-- Customer detail -->
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="10">
+                <Label>Firstname:</Label>
+                <TextBox/>
+                <Label>Lastname:</Label>
+                <TextBox/>
+                <CheckBox Content="Is developer" Margin="0 10 0 0"/>
+            </StackPanel>
+
+            <!-- Statusbar -->
+            <StatusBar Grid.Row="3" Grid.ColumnSpan="2">
+                <StatusBarItem Content=" (c) Wired Brain Coffee" FontSize="20"/>
+            </StatusBar>
         </Grid>
     </Window.Content>
 </Window>
